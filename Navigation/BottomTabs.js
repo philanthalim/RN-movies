@@ -11,7 +11,7 @@ import {
   AntDesign,
   FontAwesome,
   Feather,
-  MaterialCommunityIcons,
+  Foundation,
   MaterialIcons,
 } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
@@ -116,14 +116,20 @@ const ProfileStackScreen = ({ navigation }) => {
             shadowColor: "transparent",
           },
           headerTitleStyle: { color: "white", fontWeight: "bold" },
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-              <AntDesign name="arrowleft" size={24} color="white" />
-            </TouchableOpacity>
-          ),
         }}
         name="Edit Profile"
         component={EditProfile}
+      />
+      <SearchStack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "black",
+            shadowColor: "transparent",
+          },
+          headerTitleStyle: { color: "white", fontWeight: "bold" },
+        }}
+        name="Details"
+        component={Details}
       />
     </ProfileStack.Navigator>
   );
@@ -141,7 +147,7 @@ const QuizStackScreen = () => {
           },
           headerTitleStyle: { color: "white", fontWeight: "bold" },
         }}
-        name="Quiz"
+        name="Video"
         component={Quiz}
       />
     </QuizStack.Navigator>
@@ -184,22 +190,6 @@ const MyTabs = () => {
           tabBarIcon: ({ color }) => (
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <Feather color={color} name="search" size={24} />
-            </View>
-          ),
-        }}
-      ></Tab.Screen>
-      <Tab.Screen
-        name="Quiz"
-        component={QuizStackScreen}
-        options={{
-          tabBarLabel: "Quiz",
-          tabBarIcon: ({ focused }) => (
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <MaterialCommunityIcons
-                name="head-question-outline"
-                style={{ color: focused ? "white" : "grey" }}
-                size={24}
-              />
             </View>
           ),
         }}

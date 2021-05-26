@@ -9,14 +9,17 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { connect } from "react-redux";
-import { getRated } from "../Home/RatingAPI";
+import { getRated, getMyList } from "../Home/RatingAPI";
 
 const ProfilePage = (props) => {
   const [rated, setRated] = useState([]);
+  const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoading2, setIsLoading2] = useState(true);
 
   useEffect(() => {
     getRated(setRated, setIsLoading);
+    //getMyList(setList, setIsLoading2);
   });
 
   const renderRatedItem = ({ item }) => {

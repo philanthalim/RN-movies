@@ -5,6 +5,9 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import * as firebase from "firebase";
 import "firebase/firestore";
+import {
+  StatusBar,
+} from "react-native";
 //import profileReducer from './Reducer/ProfileReducer'
 
 const firebaseConfig = {
@@ -18,7 +21,6 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 
 const initialState = {
   firstName: "Zedd",
@@ -39,6 +41,7 @@ const store = createStore(profileReducer);
 export default function App() {
   return (
     <SafeAreaProvider>
+     
       <Provider store={store}>
         <BottomTabs />
       </Provider>

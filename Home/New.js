@@ -70,14 +70,7 @@ const New = ({ navigation }) => {
                   {item.title}
                 </Text>
               </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "flex-end",
-                  marginTop: 30,
-                  marginRight: 10,
-                }}
-              >
+              <View style={styles.ratingContainer}>
                 <Foundation
                   style={{ marginRight: 6 }}
                   name="star"
@@ -111,6 +104,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "black",
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: 30,
+    marginRight: 10,
   },
 });
 

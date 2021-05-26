@@ -8,7 +8,8 @@ import {
   Alert,
   Image,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  StatusBar,
 } from "react-native";
 
 const Popular = ({ navigation }) => {
@@ -50,6 +51,7 @@ const Popular = ({ navigation }) => {
             marginLeft: 20,
           }}
         >
+          <StatusBar barStyle="default" />
           <View style={{ flexDirection: "row", padding: 15 }}>
             <View>
               <Image
