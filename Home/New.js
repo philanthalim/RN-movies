@@ -64,7 +64,7 @@ const New = ({ navigation }) => {
                 }}
               ></Image>
             </View>
-            <View style={{ flex: 1, marginLeft: 10 }}>
+            <View style={{ flex: 1, marginLeft: 10}}>
               <View style={{}}>
                 <Text style={{ fontSize: 20, color: "white" }}>
                   {item.title}

@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  StyleSheet
 } from "react-native";
 import { connect } from "react-redux";
+import { Foundation } from "@expo/vector-icons";
 import { getRated, getMyList } from "../Home/RatingAPI";
 
 const ProfilePage = (props) => {
@@ -29,9 +31,10 @@ const ProfilePage = (props) => {
           style={{
             borderRadius: 10,
             marginTop: 20,
-            backgroundColor: "#161616",
-            marginRight: 20,
+            backgroundColor: "black",
+            marginRight: 0,
             marginLeft: 20,
+            width:120
           }}
         >
           <Image
@@ -40,6 +43,18 @@ const ProfilePage = (props) => {
               uri: `${item.pic}`,
             }}
           ></Image>
+          <View style={{marginTop:4}}>
+            <Text style={{color:'white'}}>{item.title}</Text>
+            <View style={styles.ratingContainer}>
+                <Foundation
+                  style={{ marginRight: 4 }}
+                  name="star"
+                  size={16}
+                  color="#ffd500"
+                />
+                <Text style={{ color: "white" }}>{item.myRating}</Text>
+              </View>
+          </View>
         </View>
       </TouchableOpacity>
     );
@@ -83,11 +98,11 @@ const ProfilePage = (props) => {
           style={{
             color: "white",
             fontSize: 20,
-            marginLeft: 8,
+            marginLeft: 18,
             fontWeight: "700",
           }}
         >
-          My ratings
+          My Ratings
         </Text>
       </View>
       {isLoading ? (
@@ -107,7 +122,7 @@ const ProfilePage = (props) => {
           style={{
             color: "white",
             fontSize: 20,
-            marginLeft: 8,
+            marginLeft: 18,
             fontWeight: "700",
           }}
         >
@@ -126,6 +141,7 @@ const ProfilePage = (props) => {
           />
         </View>
       )}
+      <View style={{height:90}}></View>
     </ScrollView>
   );
 };
@@ -138,6 +154,15 @@ function mapStateToProps(state) {
   };
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
+  ratingContainer: {
+    flexDirection: "row",
+  },
+});
 export default connect(mapStateToProps)(ProfilePage);
 
 /* const fetchRated = async () => {

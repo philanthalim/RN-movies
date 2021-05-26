@@ -40,6 +40,11 @@ const Details = (props) => {
     modalizeRef.current?.close("Top");
   };
 
+  const formatDate = (date) => {
+    var months = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ");
+    var b = date.split(/\D/);
+    return b[2] + " " + months[b[1] - 1] + " " + b[0];
+  };
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "black" }}>
       <View style={{ alignItems: "center", marginTop: 20 }}>
@@ -56,7 +61,7 @@ const Details = (props) => {
         <Text style={{ color: "white" }}>Rating: {rating}/10</Text>
       </View>
       <View style={styles.ratingContainer}>
-        <Text style={{ color: "white" }}>Released on: {date}</Text>
+        <Text style={{ color: "white" }}>Released on: {formatDate(date)}</Text>
       </View>
       <TouchableOpacity onPress={onOpen} style={styles.rateBtn}>
         <Text style={{ color: "black", fontSize: 20 }}>Rate</Text>
