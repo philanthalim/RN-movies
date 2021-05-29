@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ProfilePage from "../Profile/ProfilePage";
+import ProfilePage2 from "../Profile/ProfilePage2";
 import EditProfile from "../Profile/EditProfile";
 import SearchPage from "../Search/SearchPage";
 import SearchResults from "../Search/SearchResults";
@@ -106,8 +106,8 @@ const ProfileStackScreen = ({ navigation }) => {
             </TouchableOpacity>
           ),
         }}
-        name="Profile"
-        component={ProfilePage}
+        name="My Profile"
+        component={ProfilePage2}
       />
       <ProfileStack.Screen
         options={{
@@ -119,17 +119,6 @@ const ProfileStackScreen = ({ navigation }) => {
         }}
         name="Edit Profile"
         component={EditProfile}
-      />
-      <SearchStack.Screen
-        options={{
-          headerStyle: {
-            backgroundColor: "black",
-            shadowColor: "transparent",
-          },
-          headerTitleStyle: { color: "white", fontWeight: "bold" },
-        }}
-        name="Details"
-        component={Details}
       />
     </ProfileStack.Navigator>
   );

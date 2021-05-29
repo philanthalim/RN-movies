@@ -20,6 +20,14 @@ const SearchResults = (props) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
+
+  //Display keyboard when navigating from Search to SearchReults (better UX)
+  const searchInputRef = React.useRef();
+  const focusOnInput = (e) => {
+    searchInputRef.current.focus();
+  };
+  props.navigation.addListener("focus", focusOnInput);
+
   const fetchData = async () => {
     await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=552dc8e3472476c7753a8d1ceb2cc71a&language=en-US&query=${query}&page=1&include_adult=false`
@@ -111,6 +119,7 @@ const SearchResults = (props) => {
     >
       <View style={styles.container}>
         <SearchBar
+          ref={searchInputRef}
           containerStyle={{ width: "100%", backgroundColor: "black" }}
           inputContainerStyle={{ borderRadius: 10 }}
           value={query}

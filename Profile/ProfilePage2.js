@@ -7,17 +7,20 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
-  StyleSheet
+  StyleSheet,
+  AsyncStorage,
 } from "react-native";
 import { connect } from "react-redux";
 import { Foundation } from "@expo/vector-icons";
 import { getRated, getMyList } from "../Home/RatingAPI";
 
-const ProfilePage = (props) => {
+const ProfilePage2 = (props) => {
   const [rated, setRated] = useState([]);
-  const [list, setList] = useState([]);
+  //const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoading2, setIsLoading2] = useState(true);
+  const [value, setValue] = useState();
+  //const [isLoading2, setIsLoading2] = useState(true);
+
 
   useEffect(() => {
     getRated(setRated, setIsLoading);
@@ -34,7 +37,7 @@ const ProfilePage = (props) => {
             backgroundColor: "black",
             marginRight: 0,
             marginLeft: 20,
-            width:120
+            width: 120,
           }}
         >
           <Image
@@ -43,17 +46,17 @@ const ProfilePage = (props) => {
               uri: `${item.pic}`,
             }}
           ></Image>
-          <View style={{marginTop:4}}>
-            <Text style={{color:'white'}}>{item.title}</Text>
+          <View style={{ marginTop: 4 }}>
+            <Text style={{ color: "white" }}>{item.title}</Text>
             <View style={styles.ratingContainer}>
-                <Foundation
-                  style={{ marginRight: 4 }}
-                  name="star"
-                  size={16}
-                  color="#ffd500"
-                />
-                <Text style={{ color: "white" }}>{item.myRating}</Text>
-              </View>
+              <Foundation
+                style={{ marginRight: 4 }}
+                name="star"
+                size={16}
+                color="#ffd500"
+              />
+              <Text style={{ color: "white" }}>{item.myRating}</Text>
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -66,6 +69,11 @@ const ProfilePage = (props) => {
         backgroundColor: "black",
       }}
     >
+      {value !== null ? (
+        <Text style={{ color: "red" }}>data</Text>
+      ) : (
+        <Text style={{ color: "blue" }}>No data</Text>
+      )}
       <View
         style={{
           marginTop: 15,
@@ -141,7 +149,7 @@ const ProfilePage = (props) => {
           />
         </View>
       )}
-      <View style={{height:90}}></View>
+      <View style={{ height: 90 }}></View>
     </ScrollView>
   );
 };
@@ -163,7 +171,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 });
-export default connect(mapStateToProps)(ProfilePage);
+export default connect(mapStateToProps)(ProfilePage2);
 
 /* const fetchRated = async () => {
     await fetch("https://movie-rn-app.herokuapp.com/api/ratings", {

@@ -27,6 +27,7 @@ const initialState = {
   lastName: "Corey",
   bio: "I love watching sci-fi movies!",
 };
+
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_USERDETAILS": {

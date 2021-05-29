@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Image,
   KeyboardAvoidingView,
+  AsyncStorage,
 } from "react-native";
 import { connect, useDispatch } from "react-redux";
 
@@ -59,12 +60,15 @@ const EditProfile = (props) => {
       type: "UPDATE_USERDETAILS",
       data: item,
     });
-    props.navigation.navigate("Profile");
+    props.navigation.navigate("My Profile");
   };
 
   const submit = () => {
+    AsyncStorage.clear()
     updateUserDetails({ firstName: firstname, lastName: lastname, bio: Bio });
   };
+
+
   return (
     <KeyboardAvoidingView
       /*keyboardVerticalOffset={550}*/
@@ -100,7 +104,7 @@ const EditProfile = (props) => {
             onChangeText={(text) => characterCount(text, "firstName")}
           />
           <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-            <Text style={{ color: "white", marginRight: 30,}}>
+            <Text style={{ color: "white", marginRight: 30 }}>
               {characterCount1}
             </Text>
           </View>
@@ -116,7 +120,7 @@ const EditProfile = (props) => {
             onChangeText={(text) => characterCount(text, "lastName")}
           />
           <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-            <Text style={{ color: "white", marginRight: 30, }}>
+            <Text style={{ color: "white", marginRight: 30 }}>
               {characterCount2}
             </Text>
           </View>
@@ -132,7 +136,7 @@ const EditProfile = (props) => {
             onChangeText={(text) => characterCount(text, "bio")}
           />
           <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-            <Text style={{ color: "white", marginRight: 30, }}>
+            <Text style={{ color: "white", marginRight: 30 }}>
               {characterCount3}
             </Text>
           </View>
